@@ -179,10 +179,9 @@ internal sealed interface PaywallState {
                 } else {
                     val deviceLanguageCode = locale.language.lowercase()
 
-                    // We pick the one with the same language as the device if available. If not, we just pick the
-                    // first. If the list is empty, we use the device locale with the storefront country.
+                    // We pick the one with the same language as the device if available.
+                    // If not found, we use the device locale with the storefront country.
                     val javaLocale = availableStorefrontCountryLocalesByLanguage[deviceLanguageCode]
-                        ?: availableStorefrontCountryLocalesByLanguage.values.firstOrNull()
                         ?: Locale.Builder()
                             .setLocale(locale.toJavaLocale())
                             .setRegion(storefrontCountryCode.uppercase())
